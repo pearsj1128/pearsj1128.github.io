@@ -1,176 +1,791 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>pearsj1128 | Personal Page</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Personal portfolio website for pearsj1128, hosted with GitHub Pages." />
+  <title>pearsj1128 | Personal Portfolio</title>
   <style>
+    :root {
+      --bg: #f4f7fb;
+      --bg-strong: #eaf0fb;
+      --text: #182235;
+      --muted: #667085;
+      --card: #ffffff;
+      --line: #dbe4f0;
+      --primary: #2563eb;
+      --primary-dark: #1e40af;
+      --accent: #7c3aed;
+      --ink: #0f172a;
+      --success: #15803d;
+      --shadow: 0 22px 55px rgba(15, 23, 42, 0.12);
+      --radius: 24px;
+      --max: 1080px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f7fb;
-      color: #1f2937;
-      line-height: 1.6;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.16), transparent 34rem),
+        radial-gradient(circle at top right, rgba(124, 58, 237, 0.13), transparent 28rem),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--primary);
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid rgba(37, 99, 235, 0.45);
+      outline-offset: 4px;
+      border-radius: 8px;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -48px;
+      left: 16px;
+      z-index: 100;
+      padding: 10px 14px;
+      background: var(--ink);
+      color: white;
+      border-radius: 10px;
+      text-decoration: none;
+    }
+
+    .skip-link:focus {
+      top: 14px;
     }
 
     header {
-      background: #111827;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(244, 247, 251, 0.86);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(219, 228, 240, 0.9);
+    }
+
+    .nav {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 16px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
       color: white;
-      padding: 24px;
-      text-align: center;
+      box-shadow: 0 12px 24px rgba(37, 99, 235, 0.25);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
     }
 
     nav a {
-      color: white;
-      margin: 0 10px;
+      padding: 8px 10px;
+      color: #344054;
       text-decoration: none;
-      font-weight: bold;
+      font-size: 0.94rem;
+      font-weight: 700;
+      border-radius: 999px;
+    }
+
+    nav a:hover {
+      background: rgba(37, 99, 235, 0.08);
+      color: var(--primary-dark);
+    }
+
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 42px 22px 70px;
     }
 
     .hero {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 40px 24px;
-      background: white;
-      border-radius: 24px;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
       display: grid;
-      grid-template-columns: 1fr 180px;
-      gap: 30px;
+      grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+      gap: 28px;
+      align-items: stretch;
+      padding: 30px;
+      border: 1px solid rgba(219, 228, 240, 0.9);
+      border-radius: 34px;
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      display: inline-flex;
       align-items: center;
+      gap: 8px;
+      margin: 0 0 14px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.08);
+      color: var(--primary-dark);
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
     }
 
-    .hero h1 {
-      font-size: 42px;
-      margin: 0 0 12px;
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.15;
+      color: var(--ink);
     }
 
-    .tag {
-      color: #2563eb;
-      font-weight: bold;
+    h1 {
+      max-width: 760px;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      letter-spacing: -0.07em;
     }
 
-    .avatar {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #2563eb, #7c3aed);
-      color: white;
+    .lead {
+      max-width: 690px;
+      margin: 18px 0 0;
+      color: #475467;
+      font-size: clamp(1.02rem, 2vw, 1.18rem);
+    }
+
+    .actions {
       display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .button {
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 56px;
-      font-weight: bold;
-      margin: auto;
+      gap: 8px;
+      min-height: 44px;
+      padding: 11px 17px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 800;
+      box-shadow: 0 10px 20px rgba(15, 23, 42, 0.06);
+    }
+
+    .button.primary {
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .meta-item {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    .meta-item strong {
+      display: block;
+      color: var(--ink);
+      font-size: 1.05rem;
+    }
+
+    .meta-item span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .profile-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 100%;
+      padding: 24px;
+      border-radius: 28px;
+      background: linear-gradient(160deg, #101828, #1e3a8a 54%, #4c1d95);
+      color: white;
+    }
+
+    .profile-card::before {
+      content: "";
+      position: absolute;
+      inset: -60px -80px auto auto;
+      width: 220px;
+      height: 220px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+    }
+
+    .profile-inner {
+      position: relative;
+      display: grid;
+      gap: 18px;
+      justify-items: start;
+    }
+
+    .photo-wrap {
+      width: 148px;
+      height: 148px;
+      overflow: hidden;
+      border-radius: 34px;
+      border: 4px solid rgba(255, 255, 255, 0.75);
+      background: rgba(255, 255, 255, 0.16);
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.28);
+    }
+
+    .photo-wrap img,
+    .photo-fallback {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: grid;
+      place-items: center;
+    }
+
+    .photo-fallback {
+      font-size: 4rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #60a5fa, #a78bfa);
+      color: white;
+    }
+
+    .profile-card h2 {
+      color: white;
+      font-size: 1.9rem;
+      letter-spacing: -0.03em;
+    }
+
+    .profile-card p {
+      margin: 6px 0 0;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      color: rgba(255, 255, 255, 0.94);
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.18);
     }
 
     section {
-      max-width: 900px;
-      margin: 24px auto;
-      padding: 28px 24px;
-      background: white;
-      border-radius: 20px;
+      margin-top: 28px;
+      padding: 28px;
+      border: 1px solid rgba(219, 228, 240, 0.95);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.86);
+      box-shadow: 0 12px 35px rgba(15, 23, 42, 0.07);
     }
 
-    h2 {
-      color: #111827;
-      border-bottom: 3px solid #2563eb;
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+
+    .section-head p {
+      max-width: 620px;
+      margin: 8px 0 0;
+      color: var(--muted);
+    }
+
+    .pill {
       display: inline-block;
-      padding-bottom: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--bg-strong);
+      color: var(--primary-dark);
+      font-size: 0.82rem;
+      font-weight: 800;
+      white-space: nowrap;
     }
 
-    .projects {
+    .two-col {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 18px;
+    }
+
+    .info-card,
+    .project-card,
+    .course-card,
+    .resume-card {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: #ffffff;
+    }
+
+    .info-card dl {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 10px 14px;
+      margin: 0;
+    }
+
+    .info-card dt {
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .info-card dd {
+      margin: 0;
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      padding: 6px 9px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.08);
+      color: var(--primary-dark);
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+
+    .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
     }
 
-    .card {
-      background: #f9fafb;
-      border: 1px solid #e5e7eb;
-      border-radius: 16px;
-      padding: 18px;
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .project-card h3,
+    .course-card h3,
+    .resume-card h3 {
+      font-size: 1.08rem;
+      margin-bottom: 10px;
+    }
+
+    .project-card p,
+    .course-card p,
+    .resume-card p {
+      margin: 0;
+      color: #475467;
+    }
+
+    .resume-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .resume-list li {
+      padding-left: 18px;
+      position: relative;
+      color: #475467;
+    }
+
+    .resume-list li::before {
+      content: "";
+      position: absolute;
+      top: 0.73em;
+      left: 0;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+
+    .ai-box {
+      padding: 22px;
+      border-radius: 22px;
+      border: 1px solid rgba(37, 99, 235, 0.24);
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(124, 58, 237, 0.08));
+    }
+
+    .ai-box code {
+      display: block;
+      margin-top: 10px;
+      padding: 14px;
+      white-space: pre-wrap;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.92);
+      color: #dbeafe;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.92rem;
+    }
+
+    .contact-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .contact-item {
+      padding: 20px;
+      border-radius: 20px;
+      background: var(--ink);
+      color: white;
+    }
+
+    .contact-item span {
+      display: block;
+      margin-bottom: 8px;
+      color: #bfdbfe;
+      font-weight: 800;
+    }
+
+    .contact-item a {
+      color: white;
+      font-weight: 800;
+      text-decoration: none;
+      overflow-wrap: anywhere;
     }
 
     footer {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 22px 34px;
+      color: var(--muted);
       text-align: center;
-      padding: 28px;
-      color: #6b7280;
     }
 
-    @media (max-width: 700px) {
-      .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
+    @media (max-width: 860px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
       }
 
-      .projects {
+      nav {
+        justify-content: flex-start;
+      }
+
+      .hero,
+      .two-col,
+      .grid-3,
+      .grid-2,
+      .contact-box {
         grid-template-columns: 1fr;
+      }
+
+      .meta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 540px) {
+      main {
+        padding-top: 24px;
+      }
+
+      .hero,
+      section {
+        padding: 22px;
+        border-radius: 22px;
+      }
+
+      .info-card dl {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 2.6rem;
       }
     }
   </style>
 </head>
-
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
   <header>
-    <h1>pearsj1128</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="nav" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Go to top of page">
+        <span class="brand-mark" aria-hidden="true">P</span>
+        <span>pearsj1128</span>
+      </a>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#resume">Resume</a>
+        <a href="#courses">Courses</a>
+        <a href="#ai-usage">AI Usage</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <div class="hero">
+  <main id="main">
+    <section class="hero" id="top" aria-label="Introduction">
       <div>
-        <p class="tag">Personal Portfolio</p>
+        <p class="eyebrow">GitHub Pages Personal Portfolio</p>
         <h1>Hello, I’m pearsj1128.</h1>
-        <p>
-          안녕하세요. 저는 소프트웨어 개발과 웹 기술에 관심이 있는 학생입니다.
-          이 페이지는 GitHub Pages를 사용해 만든 개인 웹사이트입니다.
+        <p class="lead">
+          안녕하세요. 저는 컴퓨터공학과 소프트웨어 개발에 관심이 있는 학생입니다.
+          이 웹사이트는 HTML, CSS, GitHub Pages, 그리고 AI-assisted coding workflow를 사용해 만든 개인 포트폴리오입니다.
         </p>
+        <div class="actions" aria-label="Main actions">
+          <a class="button primary" href="#projects">View Projects</a>
+          <a class="button" href="assets/cv.pdf" target="_blank" rel="noopener">Open CV</a>
+          <a class="button" href="#contact">Contact</a>
+        </div>
+        <div class="meta-grid" aria-label="Portfolio highlights">
+          <div class="meta-item">
+            <strong>Static Website</strong>
+            <span>Compatible with GitHub Pages</span>
+          </div>
+          <div class="meta-item">
+            <strong>Responsive</strong>
+            <span>Works on desktop and mobile</span>
+          </div>
+          <div class="meta-item">
+            <strong>AI-assisted</strong>
+            <span>Improved through prompt iteration</span>
+          </div>
+        </div>
       </div>
-      <div class="avatar">P</div>
-    </div>
 
-    <section id="about">
-      <h2>About Me</h2>
-      <p>
-        저는 새로운 기술을 배우고 직접 만들어보는 것을 좋아합니다.
-        특히 프로그래밍, 웹 개발, 문제 해결에 관심이 있습니다.
-      </p>
+      <aside class="profile-card" aria-label="Profile summary">
+        <div class="profile-inner">
+          <div class="photo-wrap">
+            <img src="assets/profile.png" alt="Profile avatar for pearsj1128" onerror="this.style.display='none'; this.nextElementSibling.hidden=false;" />
+            <div class="photo-fallback" hidden aria-label="Profile avatar fallback">P</div>
+          </div>
+          <div>
+            <h2>pearsj1128</h2>
+            <p>Student · Developer · Learner</p>
+            <span class="status"><span class="dot" aria-hidden="true"></span>Deployed on GitHub Pages</span>
+          </div>
+        </div>
+      </aside>
     </section>
 
-    <section id="projects">
-      <h2>Projects</h2>
-      <div class="projects">
-        <div class="card">
+    <section id="about" aria-labelledby="about-title">
+      <div class="section-head">
+        <div>
+          <h2 id="about-title">About Me</h2>
+          <p>A short personal introduction with required name, major, and interests.</p>
+        </div>
+        <span class="pill">Required section</span>
+      </div>
+      <div class="two-col">
+        <div class="info-card">
+          <dl>
+            <dt>Name</dt>
+            <dd>pearsj1128</dd>
+            <dt>Major</dt>
+            <dd>Computer Science &amp; Engineering</dd>
+            <dt>Interests</dt>
+            <dd>Web development, programming, AI tools</dd>
+          </dl>
+        </div>
+        <div class="info-card">
+          <p>
+            저는 새로운 기술을 직접 실험하고 작은 결과물로 구현하는 과정을 좋아합니다.
+            특히 HTML/CSS 기반 웹 개발, 문제 해결, 그리고 AI 도구를 활용한 개발 workflow에 관심이 있습니다.
+            이번 페이지에서는 GitHub Pages 배포, 반응형 레이아웃, 접근성 있는 구조를 함께 연습했습니다.
+          </p>
+          <div class="tags" aria-label="Skills and interests">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">GitHub Pages</span>
+            <span class="tag">AI-assisted Coding</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-title">
+      <div class="section-head">
+        <div>
+          <h2 id="projects-title">Projects & Activities</h2>
+          <p>At least two activities or projects are listed clearly.</p>
+        </div>
+        <span class="pill">3 items</span>
+      </div>
+      <div class="grid-3">
+        <article class="project-card">
           <h3>Course Project</h3>
-          <p>수업에서 배운 내용을 바탕으로 프로그래밍 과제를 수행했습니다.</p>
-        </div>
-
-        <div class="card">
+          <p>수업에서 배운 내용을 바탕으로 프로그래밍 과제를 수행하며 코드 구조와 문제 해결 방법을 연습했습니다.</p>
+          <div class="tags"><span class="tag">Coursework</span><span class="tag">Programming</span></div>
+        </article>
+        <article class="project-card">
           <h3>GitHub Pages Website</h3>
-          <p>HTML과 CSS를 사용해 개인 웹사이트를 만들고 배포했습니다.</p>
-        </div>
-
-        <div class="card">
+          <p>HTML과 CSS만으로 정적 개인 웹사이트를 만들고 GitHub Pages를 통해 공개 URL로 배포했습니다.</p>
+          <div class="tags"><span class="tag">HTML/CSS</span><span class="tag">Deployment</span></div>
+        </article>
+        <article class="project-card">
           <h3>AI-assisted Coding</h3>
-          <p>AI 도구의 도움을 받아 웹페이지 구조와 디자인을 개선했습니다.</p>
-        </div>
+          <p>AI 도구와 대화하며 요구사항을 정리하고, 디자인과 콘텐츠를 반복적으로 개선하는 과정을 경험했습니다.</p>
+          <div class="tags"><span class="tag">Prompting</span><span class="tag">Iteration</span></div>
+        </article>
       </div>
     </section>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Email: pearsj1128@snu.ac.kr</p>
-      <p>GitHub: github.com/pearsj1128</p>
+    <section id="resume" aria-labelledby="resume-title">
+      <div class="section-head">
+        <div>
+          <h2 id="resume-title">CV / Resume</h2>
+          <p>Education, skills, and experience are summarized for the required resume section.</p>
+        </div>
+        <a class="button" href="assets/cv.pdf" target="_blank" rel="noopener">Download CV PDF</a>
+      </div>
+      <div class="grid-3">
+        <article class="resume-card">
+          <h3>Education</h3>
+          <ul class="resume-list">
+            <li>Seoul National University</li>
+            <li>Major: Computer Science &amp; Engineering</li>
+          </ul>
+        </article>
+        <article class="resume-card">
+          <h3>Skills</h3>
+          <ul class="resume-list">
+            <li>HTML, CSS, GitHub Pages</li>
+            <li>C++, Python, problem solving</li>
+            <li>AI-assisted coding workflow</li>
+          </ul>
+        </article>
+        <article class="resume-card">
+          <h3>Experience</h3>
+          <ul class="resume-list">
+            <li>Built and deployed a personal portfolio website</li>
+            <li>Improved the site through design prompts and review</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="courses" aria-labelledby="courses-title">
+      <div class="section-head">
+        <div>
+          <h2 id="courses-title">Courses I Plan to Take</h2>
+          <p>A planned-course section is included as required by the assignment.</p>
+        </div>
+        <span class="pill">Course plan</span>
+      </div>
+      <div class="grid-2">
+        <article class="course-card">
+          <h3>Data Structures &amp; Algorithms</h3>
+          <p>자료구조와 알고리즘을 더 깊게 공부해 문제 해결 능력을 키우고 싶습니다.</p>
+        </article>
+        <article class="course-card">
+          <h3>Artificial Intelligence</h3>
+          <p>AI 모델의 기본 원리와 실제 응용 방식을 배우고 싶습니다.</p>
+        </article>
+        <article class="course-card">
+          <h3>Database Systems</h3>
+          <p>데이터를 효율적으로 저장하고 질의하는 시스템 설계를 공부하고 싶습니다.</p>
+        </article>
+        <article class="course-card">
+          <h3>Computer Networks</h3>
+          <p>웹 서비스가 네트워크 위에서 동작하는 방식을 이해하고 싶습니다.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="ai-usage" aria-labelledby="ai-title">
+      <div class="section-head">
+        <div>
+          <h2 id="ai-title">AI Usage</h2>
+          <p>This section documents the AI tool and one prompt used to improve the website.</p>
+        </div>
+        <span class="pill">Required section</span>
+      </div>
+      <div class="ai-box">
+        <strong>Tool:</strong> ChatGPT<br />
+        <strong>Prompt used:</strong>
+        <code>Build a static personal website in the repo root. Keep it simple and compatible with GitHub Pages. Make it responsive and accessible. Include About Me, Projects, Contact, Resume, planned courses, and an AI Usage section.</code>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-title">
+      <div class="section-head">
+        <div>
+          <h2 id="contact-title">Contact</h2>
+          <p>Contact information and GitHub profile are easy to find.</p>
+        </div>
+        <span class="pill">Public links</span>
+      </div>
+      <div class="contact-box">
+        <div class="contact-item">
+          <span>Email</span>
+          <a href="mailto:pearsj1128@snu.ac.kr">pearsj1128@snu.ac.kr</a>
+        </div>
+        <div class="contact-item">
+          <span>GitHub</span>
+          <a href="https://github.com/pearsj1128" target="_blank" rel="noopener">github.com/pearsj1128</a>
+        </div>
+      </div>
     </section>
   </main>
 
   <footer>
-    <p>© 2026 pearsj1128. Hosted on GitHub Pages.</p>
+    <p>© 2026 pearsj1128. Built with HTML/CSS and hosted on GitHub Pages.</p>
   </footer>
 </body>
 </html>
