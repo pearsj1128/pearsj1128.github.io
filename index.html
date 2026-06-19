@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>pearsj1128 | Chemistry Portfolio</title>
+  <style>
+    :root {
+      --bg: #f7fbff;
+      --card: #ffffff;
+      --ink: #101828;
+      --muted: #5f6b7a;
+      --line: #dbe7f0;
+      --blue: #2557d6;
+      --teal: #008f8c;
+      --soft: #eef7ff;
+      --warm: #fff2e8;
+      --shadow: 0 22px 60px rgba(16, 24, 40, 0.12);
+      --radius: 28px;
+      --max: 1080px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(0, 143, 140, 0.18), transparent 34rem),
+        radial-gradient(circle at bottom right, rgba(255, 210, 170, 0.34), transparent 32rem),
+        var(--bg);
+      line-height: 1.65;
+    }
+
+    a { color: var(--blue); }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 16px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: linear-gradient(135deg, var(--blue), var(--teal));
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 14px;
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    nav a {
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    nav a:hover { color: var(--blue); }
+
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 38px 22px 72px;
+    }
+
+    .hero {
+      min-height: 76vh;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .panel {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy { padding: 44px; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 18px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--soft);
+      color: var(--blue);
+      border: 1px solid var(--line);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--teal);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: 0.98;
+      letter-spacing: -0.07em;
+    }
+
+    .hero-text {
+      max-width: 680px;
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: 19px;
+    }
+
+    .hero-text strong { color: var(--ink); }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--blue);
+      background: white;
+      color: var(--blue);
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    .button.primary {
+      background: var(--blue);
+      color: white;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(37, 87, 214, 0.18);
+    }
+
+    .profile { padding: 28px; text-align: center; }
+
+    .profile-img {
+      width: min(245px, 82%);
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto 20px;
+      border-radius: 34px;
+      border: 8px solid white;
+      box-shadow: 0 18px 36px rgba(16, 24, 40, 0.15);
+      background: linear-gradient(135deg, var(--blue), var(--teal));
+    }
+
+    .profile h2 { margin: 0; font-size: 30px; }
+    .profile p { margin: 8px 0 0; color: var(--muted); }
+
+    .facts {
+      display: grid;
+      gap: 10px;
+      margin-top: 22px;
+      text-align: left;
+    }
+
+    .fact {
+      padding: 13px 14px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: var(--soft);
+    }
+
+    .fact span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .fact strong { display: block; margin-top: 3px; }
+
+    section {
+      margin-top: 28px;
+      padding: 34px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 14px 34px rgba(16, 24, 40, 0.08);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 22px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 42px);
+      letter-spacing: -0.045em;
+      line-height: 1.05;
+    }
+
+    .section-note {
+      max-width: 470px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .info-table {
+      display: grid;
+      gap: 10px;
+      margin-top: 22px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--soft);
+    }
+
+    .info-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 18px;
+    }
+
+    .info-row strong { color: var(--ink); }
+    .info-row span { color: var(--muted); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      padding: 22px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: white;
+    }
+
+    .card h3 { margin: 0 0 10px; font-size: 20px; }
+    .card p { margin: 0; color: var(--muted); }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
+
+    .chip {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--soft);
+      color: var(--blue);
+      border: 1px solid var(--line);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .resume-grid, .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .box {
+      padding: 22px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: white;
+    }
+
+    .box h3 { margin-top: 0; }
+    .box p, .box li { color: var(--muted); }
+
+    .course-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .course {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, white, var(--soft));
+    }
+
+    .course strong { display: block; margin-bottom: 5px; }
+    .course span { color: var(--muted); }
+
+    .ai {
+      padding: 24px;
+      border-radius: 22px;
+      background: #0e2f38;
+      color: white;
+    }
+
+    .ai p, .ai li { color: rgba(255, 255, 255, 0.84); }
+    .ai code {
+      background: rgba(255, 255, 255, 0.12);
+      color: white;
+      padding: 3px 6px;
+      border-radius: 7px;
+    }
+
+    footer {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 26px 22px 44px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 860px) {
+      .nav { align-items: flex-start; flex-direction: column; }
+      nav { justify-content: flex-start; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .grid, .resume-grid, .contact-grid, .course-list { grid-template-columns: 1fr; }
+      .section-head { align-items: flex-start; flex-direction: column; }
+      .hero-copy, section { padding: 26px; }
+    }
+
+    @media (max-width: 520px) {
+      main { padding: 22px 14px 48px; }
+      .nav { padding: 14px; }
+      .buttons { flex-direction: column; }
+      .button { width: 100%; }
+      .info-row { grid-template-columns: 1fr; gap: 2px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <a class="brand" href="#top" aria-label="Go to top">
+        <span class="brand-mark">P</span>
+        <span>pearsj1128</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#resume">Resume</a>
+        <a href="#courses">Courses</a>
+        <a href="#ai-usage">AI Usage</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="hero">
+      <section class="hero-copy panel" aria-labelledby="hero-title">
+        <p class="eyebrow"><span class="dot"></span> Chemistry Major Portfolio</p>
+        <h1 id="hero-title">Hello, I’m pearsj1128.</h1>
+        <p class="hero-text">
+          I am a <strong>Chemistry major</strong> interested in laboratory work,
+          scientific data interpretation, and clear science communication.
+          This site is a personal portfolio built with HTML, CSS, GitHub Pages,
+          and an AI-assisted coding workflow.
+        </p>
+        <div class="buttons">
+          <a class="button primary" href="#projects">View Projects</a>
+          <a class="button" href="assets/cv.pdf">Open CV</a>
+          <a class="button" href="#contact">Contact</a>
+        </div>
+      </section>
+
+      <aside class="profile panel" aria-label="Profile summary">
+        <img class="profile-img" src="assets/profile.png" alt="Profile image for pearsj1128" />
+        <h2>pearsj1128</h2>
+        <p>Student · Chemistry Major · Scientific Learner</p>
+        <div class="facts">
+          <div class="fact"><span>Major</span><strong>Chemistry</strong></div>
+          <div class="fact"><span>Interests</span><strong>Lab work, analysis, scientific writing</strong></div>
+          <div class="fact"><span>Deployment</span><strong>GitHub Pages</strong></div>
+        </div>
+      </aside>
+    </div>
+
+    <section id="about">
+      <div class="section-head">
+        <h2>About Me</h2>
+        <p class="section-note">Required personal introduction with name, major, and interests.</p>
+      </div>
+      <p>
+        저는 화학을 전공하며 분자 구조, 화학 반응, 실험 결과 해석, 과학적 글쓰기에 관심을 가지고 있습니다.
+        수업에서 배운 개념을 실제 관찰과 연결하고, 복잡한 과학 내용을 명확하게 정리하는 능력을 키우고 싶습니다.
+      </p>
+      <p>
+        This portfolio also shows that I can use GitHub Pages to publish a static website and use AI tools responsibly
+        for planning, editing, and improving a webpage.
+      </p>
+      <div class="info-table" aria-label="Personal information">
+        <div class="info-row"><strong>Name</strong><span>pearsj1128</span></div>
+        <div class="info-row"><strong>Major</strong><span>Chemistry</span></div>
+        <div class="info-row"><strong>Interests</strong><span>Chemistry, laboratory work, data interpretation, science communication, AI tools</span></div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-head">
+        <h2>Projects & Activities</h2>
+        <p class="section-note">At least two activities are listed clearly for the assignment checkpoint.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <h3>Chemistry Learning Portfolio</h3>
+          <p>Organized chemistry concepts and study reflections into a clear portfolio format.</p>
+          <div class="chips"><span class="chip">Chemistry</span><span class="chip">Study Notes</span></div>
+        </article>
+        <article class="card">
+          <h3>Data Interpretation Practice</h3>
+          <p>Practiced explaining experiment-style observations and reasoning from evidence.</p>
+          <div class="chips"><span class="chip">Analysis</span><span class="chip">Reasoning</span></div>
+        </article>
+        <article class="card">
+          <h3>GitHub Pages Website</h3>
+          <p>Built this static portfolio with HTML/CSS and deployed it as a public GitHub Pages website.</p>
+          <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">Deployment</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="resume">
+      <div class="section-head">
+        <h2>CV / Resume</h2>
+        <p class="section-note">Resume section with downloadable PDF in the assets folder.</p>
+      </div>
+      <div class="resume-grid">
+        <div class="box">
+          <h3>Education</h3>
+          <p>Seoul National University</p>
+          <p>Major: Chemistry</p>
+          <div class="buttons"><a class="button primary" href="assets/cv.pdf">Download CV PDF</a></div>
+        </div>
+        <div class="box">
+          <h3>Skills & Focus</h3>
+          <ul>
+            <li>Chemistry fundamentals and scientific reasoning</li>
+            <li>Laboratory awareness and data interpretation</li>
+            <li>Scientific writing and structured explanation</li>
+            <li>HTML, CSS, GitHub Pages, AI-assisted workflow</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="courses">
+      <div class="section-head">
+        <h2>Courses I Plan to Take</h2>
+        <p class="section-note">Planned courses aligned with my Chemistry major.</p>
+      </div>
+      <div class="course-list">
+        <div class="course"><strong>Organic Chemistry</strong><span>Reaction mechanisms, molecular structure, and synthesis.</span></div>
+        <div class="course"><strong>Analytical Chemistry</strong><span>Chemical measurement, data quality, and analysis methods.</span></div>
+        <div class="course"><strong>Physical Chemistry</strong><span>Thermodynamics, kinetics, and molecular-level reasoning.</span></div>
+        <div class="course"><strong>Biochemistry</strong><span>Chemical principles in biological systems.</span></div>
+      </div>
+    </section>
+
+    <section id="ai-usage">
+      <div class="section-head">
+        <h2>AI Usage</h2>
+        <p class="section-note">Transparent record of how AI was used.</p>
+      </div>
+      <div class="ai">
+        <h3>Tool Used</h3>
+        <p>
+          I used ChatGPT to plan the page structure, revise the content for a Chemistry major,
+          improve the HTML/CSS design, and check that the website meets the assignment requirements.
+        </p>
+        <h3>Example Prompts</h3>
+        <ul>
+          <li><code>Create a GitHub Pages personal portfolio with About, Projects, Resume, Courses, AI Usage, and Contact.</code></li>
+          <li><code>Revise the portfolio so the major is Chemistry and the content matches chemistry-related interests.</code></li>
+          <li><code>Make the design clean, responsive, and suitable for academic submission.</code></li>
+        </ul>
+        <h3>Human Review</h3>
+        <p>I verified the major, checked the required sections, and confirmed the site URL before submission.</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-head">
+        <h2>Contact</h2>
+        <p class="section-note">Basic contact information for this portfolio.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="box">
+          <h3>Email</h3>
+          <p>pearsj1128@snu.ac.kr</p>
+          <p>If this email is incorrect, replace it before final submission.</p>
+        </div>
+        <div class="box">
+          <h3>GitHub</h3>
+          <p><a href="https://github.com/pearsj1128">github.com/pearsj1128</a></p>
+          <p><a href="https://pearsj1128.github.io">pearsj1128.github.io</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 pearsj1128. Chemistry portfolio hosted on GitHub Pages.</p>
+  </footer>
+</body>
+</html>
