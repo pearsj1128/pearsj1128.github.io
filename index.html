@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pearsj1128 | Personal Page</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      padding: 24px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .hero {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 40px 24px;
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      display: grid;
+      grid-template-columns: 1fr 180px;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin: 0 0 12px;
+    }
+
+    .tag {
+      color: #2563eb;
+      font-weight: bold;
+    }
+
+    .avatar {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 56px;
+      font-weight: bold;
+      margin: auto;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 24px auto;
+      padding: 28px 24px;
+      background: white;
+      border-radius: 20px;
+    }
+
+    h2 {
+      color: #111827;
+      border-bottom: 3px solid #2563eb;
+      display: inline-block;
+      padding-bottom: 6px;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 18px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 28px;
+      color: #6b7280;
+    }
+
+    @media (max-width: 700px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .projects {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>pearsj1128</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div>
+        <p class="tag">Personal Portfolio</p>
+        <h1>Hello, I’m pearsj1128.</h1>
+        <p>
+          안녕하세요. 저는 소프트웨어 개발과 웹 기술에 관심이 있는 학생입니다.
+          이 페이지는 GitHub Pages를 사용해 만든 개인 웹사이트입니다.
+        </p>
+      </div>
+      <div class="avatar">P</div>
+    </div>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        저는 새로운 기술을 배우고 직접 만들어보는 것을 좋아합니다.
+        특히 프로그래밍, 웹 개발, 문제 해결에 관심이 있습니다.
+      </p>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="projects">
+        <div class="card">
+          <h3>Course Project</h3>
+          <p>수업에서 배운 내용을 바탕으로 프로그래밍 과제를 수행했습니다.</p>
+        </div>
+
+        <div class="card">
+          <h3>GitHub Pages Website</h3>
+          <p>HTML과 CSS를 사용해 개인 웹사이트를 만들고 배포했습니다.</p>
+        </div>
+
+        <div class="card">
+          <h3>AI-assisted Coding</h3>
+          <p>AI 도구의 도움을 받아 웹페이지 구조와 디자인을 개선했습니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email: your-email@example.com</p>
+      <p>GitHub: github.com/pearsj1128</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 pearsj1128. Hosted on GitHub Pages.</p>
+  </footer>
+</body>
+</html>
